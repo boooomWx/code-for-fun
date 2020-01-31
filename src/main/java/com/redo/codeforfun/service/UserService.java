@@ -1,16 +1,19 @@
 package com.redo.codeforfun.service;
 
 import com.redo.codeforfun.model.UserDO;
+import com.redo.codeforfun.model.dao.UserDao;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 @Component
 public class UserService {
 
+    @Resource
+    private UserDao userDao;
+
     public UserDO getUserByUid() {
-        UserDO userDO = new UserDO();
-        userDO.setId(1L);
-        userDO.setName("redo");
-        userDO.setAge(18);
+        UserDO userDO = userDao.getById(1);
         return userDO;
     }
 
